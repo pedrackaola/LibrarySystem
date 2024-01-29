@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') %>
+
+    <h1>Book Search Results</h1>
+    <form action="/books" method="post">
+        <label for="searchTerm">Search for books:</label>
+        <input type="text" id="searchTerm" name="q" placeholder="Enter a search term" required>
+        <button type="submit">Search</button>
+      </form>
+      <p>Search Term: <%= searchTerm %></p>
+    <% if (books.length > 0) { %>
+      <ul>
+        <% books.forEach(book => { %>
+          <li>
+            <img src="<%= book.coverUrl %>" alt="<%= book.title %> Cover" style="max-width: 100px;">
+            <h3>       <a href="/books/<%= encodeURIComponent(book.title) %>"><%= book.title %></a></h3>
+            <p>Author: <%= book.author %></p>
+            <p>Year: <%= book.year %></p>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>No books found for '<%= searchTerm %>'</p>
+    <% } %>
+
+    <%- include('partials/footer.ejs') %>

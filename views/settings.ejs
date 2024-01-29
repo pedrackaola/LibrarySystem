@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+
+  <h1>User Settings</h1>
+
+  <% if (user) { %>
+    <form id="settingsForm" action="/user/<%= user.id %>/settings" method="post">
+      <label for="fav_gen">Favorite Genre:</label>
+      <input type="text" id="fav_gen" name="fav_gen" value="<%= user.fav_gen %>">
+
+      <label for="fav_author">Favorite Author:</label>
+      <input type="text" id="fav_author" name="fav_author" value="<%= user.fav_author %>">
+
+      <label for="fav_book">Favorite Book:</label>
+      <input type="text" id="fav_book" name="fav_book" value="<%= user.fav_book %>">
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+        <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+  
+      </select>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" value="<%= user.age %>">
+
+      <button type="submit">Save Settings</button>
+    </form>
+  <% } else { %>
+    <p>User not found</p>
+  <% } %>
+
+
+  <%- include('partials/footer.ejs') %>

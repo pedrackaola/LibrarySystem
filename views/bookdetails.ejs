@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+
+  <h1><%= book.title %></h1>
+  <img src="<%= book.coverUrl %>" alt="<%= book.title %> Cover" style="max-width: 100px;">
+  <p>Author: <%= book.author_name ? book.author_name.join(', ') : 'Unknown' %></p>
+  <p>Year: <%= book.first_publish_year || 'Unknown' %></p>
+  <p>Genre: <%= book.subjects ? book.subjects.join(', ') : 'Unknown' %></p>
+  
+
+  <h2>Key words</h2>
+  <p><%= book.subject || 'No description available' %></p>
+  <p><%= book.first_sentence || 'No description available' %></p>
+
+  <button> Borrow book </button>
+  <button> Reserve book </button>
+
+  <h2>Reader Reviews</h2>
+  
+
+  <%- include('partials/footer.ejs') %>
+
+

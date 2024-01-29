@@ -1,0 +1,32 @@
+<%- include('partials/headerLog.ejs') %>
+
+    <h1>Welcome to the Main Page</h1>
+
+    <% if (loggedIn) { %>
+      <p>Hello, <%= user.name %></p>
+
+      <p>Favourite Genre: <%= user.fav_gen %></p>
+      <p>Favourite Author: <%= user.fav_author %></p>
+      <p>Favourite Book: <%= user.fav_book %></p>
+      <p>Gender: <%= user.gender %></p>
+      <p>Age: <%= user.age %></p>
+
+      <p>Number of currently borrowed books: <%= user.num_of_books %></p>
+      <p>Number of booked books: <%= user.num_of_res %></p>
+      
+      <form id="logoutForm" action="/logout" method="post">
+        <button type="submit">Logout</button>
+      </form>
+
+      <form>
+        <button> <a href="/user/<%= user.id %>/settings"> Update Your Profile </a></button>
+     </form>
+
+    
+    <% } else { %>
+      <p>Please log in to access the main page.</p>
+      <a href="/login">Login</a>
+    <% } %>
+
+
+    <%- include('partials/footer.ejs') %>
